@@ -1,0 +1,18 @@
+.libraryRow {
+  background-color: beige;
+  border-color: black;
+  border: solid;
+  border: 5px solid red;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table, th, td {
+  background-color: beige;
+  padding: 2px;
+  border: 2px solid black;
+}
