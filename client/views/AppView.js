@@ -12,10 +12,18 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
+  events:{
+    // 'ended' : function(){
+    //   alert('app detected ending of queue');
+    // }
+  },
+
   render: function(){
     return this.$el.html([
       this.playerView.$el,
+      '<h1>Library</h1>',
       this.libraryView.$el,
+      '<h1>Queue</h1>',
       this.songQueueView.$el
     ]);
   }
