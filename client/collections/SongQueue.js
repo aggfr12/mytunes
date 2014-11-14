@@ -26,7 +26,7 @@ var SongQueue = Songs.extend({
       this.playFirst();
     }
     if(this.length === 0) {
-      this.endPlay();
+      song.stop();
     }
   },
 
