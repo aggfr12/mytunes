@@ -1,25 +1,28 @@
-// LibraryView.js - Defines a backbone view class for the music library.
-var LibraryView = Backbone.View.extend({
+define(['underscore', 'backbone', 'views/LibraryEntryView'], function(_, Backbone, LibraryEntryView){
+  // LibraryView.js - Defines a backbone view class for the music library.
+  var LibraryView = Backbone.View.extend({
 
-  tagName: "table",
+    tagName: "table",
 
-  initialize: function() {
-    this.render();
-    this.collection.on('play', function(song){
+    initialize: function() {
       this.render();
-    }, this);
-  },
+      this.collection.on('play', function(song){
+        this.render();
+      }, this);
+    },
 
-  render: function(){
-    // to preserve event handlers on child nodes, we must call .detach() on them before overwriting with .html()
-    // see http://api.jquery.com/detach/
-    this.$el.children().detach();
+    render: function(){
+      // to preserve event handlers on child nodes, we must call .detach() on them before overwriting with .html()
+      // see http://api.jquery.com/detach/
+      this.$el.children().detach();
 
-    this.$el.html('<th>Artist</th><th>Title</th><th>Count</th>').append(
-      this.collection.map(function(song){
-        return new LibraryEntryView({model: song}).render();
-      })
-    );
-  }
+      this.$el.html('<th>Artist</th><th>Title</th><th>Count</th>').append(
+        this.collection.map(function(song){
+          return new LibraryEntryView({model: song}).render();
+        })
+      );
+    }
 
+  });
+  return LibraryView;
 });
