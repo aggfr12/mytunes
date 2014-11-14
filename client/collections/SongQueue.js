@@ -17,16 +17,17 @@ var SongQueue = Songs.extend({
     this.shift();
     if(this.length > 0){
       this.playFirst();
+    }else{
+      song.stop();
     }
   },
 
   handleDequeue: function(song){
-    this.remove(song);
-    if(this.length > 0){
-      this.playFirst();
+    if(this.at(0) === song){
+      this.handleNextSong(song);
     }
-    if(this.length === 0) {
-      song.stop();
+    else{
+      this.remove(song);
     }
   },
 
